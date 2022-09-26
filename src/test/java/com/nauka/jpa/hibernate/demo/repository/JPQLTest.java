@@ -28,7 +28,7 @@ class JPQLTest {
 	
 	@Test
 	public void jpqlMojTest(){
-	List courseList = em.createQuery("select c from Course c").getResultList();
+	List<Course> courseList = em.createQuery("select c from Course c").getResultList();
 	log.info("moj wlasny select c from course c ->{}",courseList);
 	}
 	
@@ -49,10 +49,6 @@ class JPQLTest {
 		log.info("Select c from Course c ->{}",resultList);		
 	}
 	
-	
-
-	
-	
 	@Test
 	public void native_queries_test() {	
 	//	Query query = em.createNativeQuery("SELECT * FROM COURSE where id=?", Course.class);
@@ -64,7 +60,6 @@ class JPQLTest {
 		List resultList = query.getResultList();
 		log.info("Native query  select * from course where ->{}",resultList);
 	}
-	
 	
 	@Test
 	@Transactional
@@ -94,7 +89,39 @@ class JPQLTest {
 		
 	}
 	
-
+	@Test
+	public void join() {
+		Query query  = em.createQuery("Select c,s from Course c JOIN c.students s");
+		List<Object[]>resultList = query.getResultList();
+			log.info("resultlist size ->{}",resultList.size());
+		for(Object[] result: resultList) {
+			log.info("Course->{} Student->{}",result[0],result[1]);		
+		}
+	}
+	
+	@Test
+	public void left_Join() {
+		Query query  = em.createQuery("Select c,s from Course c LEFT JOIN c.students s");
+		List<Object[]>resultList = query.getResultList();
+			log.info("resultlist left join size ->{}",resultList.size());
+		for(Object[] result: resultList) {
+			log.info("Course->{} Student->{}",result[0],result[1]);		
+		}
+	}
+	
+	@Test
+	public void cross_Join() {
+		Query query  = em.createQuery("Select c,s from Course c,Student s");
+		List<Object[]>resultList = query.getResultList();
+		log.info("resultlist left cross size ->{}",resultList.size());
+		for(Object[] result: resultList) {
+			log.info("Course->{} Student->{}",result[0],result[1]);		
+		}
+	}
+	
+	
+	
+	
 	
 	
 }
