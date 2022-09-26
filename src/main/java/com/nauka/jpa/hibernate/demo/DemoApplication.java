@@ -2,7 +2,6 @@ package com.nauka.jpa.hibernate.demo;
 
 import java.math.BigDecimal;
 
-import com.nauka.jpa.hibernate.demo.entity.Employee;
 import com.nauka.jpa.hibernate.demo.entity.FullTimeEmployee;
 import com.nauka.jpa.hibernate.demo.entity.PartTimeEmployee;
 import com.nauka.jpa.hibernate.demo.repository.CourseRepository;

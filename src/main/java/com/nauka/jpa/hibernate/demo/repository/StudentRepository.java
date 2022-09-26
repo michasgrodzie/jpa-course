@@ -7,16 +7,12 @@ import com.nauka.jpa.hibernate.demo.entity.Course;
 import com.nauka.jpa.hibernate.demo.entity.Passport;
 import com.nauka.jpa.hibernate.demo.entity.Student;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
 public class StudentRepository {
-	
-	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	EntityManager em;
